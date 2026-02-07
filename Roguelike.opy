@@ -338,7 +338,8 @@ def itemlist():
     "Primary Expertise;{0}TX C0000000000d075>;0000;3;Doubles all Blue items. You are more likely to find Blue items".format(txbypass), 
     "Artifact Printer;{0}TX C0000000000EE0C>;;3;You are more likely to find higher tier items".format(txbypass), 
     "57-Leaf Clover;{0};;3;Your chance-based effects roll +1 more time(s) if they fail".format(abilityIconString(Hero.KIRIKO, Button.ABILITY_2)), 
-    "Ancient Scepter;{0}TX C0000000005e4c6>;;3;Your Ultimate can be used 2(+1) times once charged".format(txbypass), 
+    "Ancient Scepter;{0}TX C0000000005e4c6>;;3;Your Ultimate can be used 2(+1) times once charged".format(txbypass),
+    "ShatteredGlass;{0}TX C00000000021569>;;2;+200% Damage, -400% maxHP".format(txbypass), 
     "I AM HERE!;{0}TX C0000000005e4dd>;;3;When an enemy is near death, teleport to them. 20(-5)s CD".format(txbypass), 
     "Compression Event;{0};0;3;Reclamation costs +40% more, but gives +1 more Score".format(abilityIconString(Hero.SIGMA, Button.ULTIMATE)), 
     "Low-Poly Box;{0}TX C000000000207b9>;000000;3;Gain 3 random items".format(txbypass), 
@@ -837,6 +838,7 @@ def stats():
     if "Glass" in eventPlayer.CorruptItems:
         goto lbl_0
     eventPlayer.damage += len([player for player in eventPlayer.Items if strContains(player, "Glass")]) * 50
+    eventPlayer.damage += len([player for player in eventPlayer.Items if strContains(player, "ShatteredGlass")]) * 200
     lbl_0:
     if "T O N K" in eventPlayer.CorruptItems:
         goto lbl_1
@@ -859,6 +861,7 @@ def stats():
     if "Glass" in eventPlayer.CorruptItems:
         goto lbl_4
     eventPlayer.healthbuff += len([player for player in eventPlayer.Items if strContains(player, "Glass")]) * -80
+    eventPlayer.healthbuff += len([player for player in eventPlayer.Items if strContains(player, "ShatteredGlass")]) * -400
     lbl_4:
     if "Horse Pill" in eventPlayer.CorruptItems:
         goto lbl_5
